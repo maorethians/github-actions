@@ -23,3 +23,10 @@ jobs:
 
       - name: Run Jest tests
         run: yarn test
+
+      - name: Upload coverage report
+        if: always() # Ensures this step runs even if tests fail
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/
