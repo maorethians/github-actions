@@ -24,8 +24,9 @@ jobs:
       - name: Run Jest tests
         run: yarn test
 
-      - name: Display coverage report
-        if: success() # Only run if tests pass
-        run: |
-          echo "Coverage summary:"
-          cat coverage/lcov-report/index.html
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/lcov.info
+          flags: unittests
+          fail_ci_if_error: true
