@@ -18,17 +18,11 @@ jobs:
         with:
           node-version: 18
 
-      - name: Check Yarn version
-        run: yarn --version
-
       - name: Cache Yarn dependencies
         uses: actions/cache@v3
         with:
           path: ~/.cache/yarn
           key: yarn-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Check if yarn cache exists (v1 example)
-        run: ls -al ~/.cache/yarn
 
       - name: Install dependencies
         run: yarn
