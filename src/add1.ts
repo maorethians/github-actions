@@ -1,13 +1,14 @@
-export const add1 = (...numbers: number[])=> {
-    let result = 0;
-    numbers.forEach(number => {
-        result += number;
-    })
+export const addNumbers = (...numbers: number[]) => {
+    let sum = 0;
+    numbers.forEach(num => {
+        sum += num;
+    });
 
-    let result1 = 0
-    numbers.forEach(number => {
-        result1 += number;
-    })
+    let unusedVar = 0; // Unused variable - should trigger an issue
 
-    return result1
-}
+    numbers.forEach(num => {
+        sum += num; // Duplicate computation - possible code smell
+    });
+
+    return sum;
+};
